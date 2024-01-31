@@ -1,0 +1,36 @@
+const int motionPin = 3;
+const int buttonPin = 2;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(motionPin, INPUT);
+  pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(buttonPin, INPUT_PULLUP);
+  attachInterrupt(digitalPinToInterrupt(buttonPin), bInterrupt, CHANGE);
+}
+
+void loop() {
+  int motionState = digitalRead(motionPin);
+  
+  if (motionState == HIGH) {
+    Serial.println("Motion is....DETECTED! Alpha team moving in!");
+    digitalWrite(LED_BUILTIN, HIGH);
+  } else {
+    Serial.println("No motion is detected! Mission Accomplished, Over!!");
+    digitalWrite(LED_BUILTIN, LOW);
+  }
+
+  delay(1000);
+}
+
+void bInterrupt() {
+  int buttonStatus = digitalRead(buttonPin);
+
+  if (buttonStatus == LOW) {
+    Serial.println("Button pressed, Aplha Team Reporting, over!");
+    digitalWrite(LED_BUILTIN, HIGH);
+  } else {
+    Serial.println("Button released. Over!");
+    digitalWrite(LED_BUILTIN, LOW);
+  }
+}
