@@ -1,10 +1,10 @@
 const int motionPin = 3;
 const int buttonPin = 2;
-const int trigPin = 7;  // Connect to Trig pin on the ultrasonic sensor
-const int echoPin = 6;  // Connect to Echo pin on the ultrasonic sensor
-const int externalLEDPin = 8; // Connect to External LED
+const int trigPin = 7; 
+const int echoPin = 6;  
+const int externalLEDPin = 8; 
 
-int currentSensor = 1;  // 1: Motion Sensor, 2: Ultrasonic Sensor
+int currentSensor = 1;  
 
 void setup() {
   Serial.begin(9600);
@@ -47,8 +47,6 @@ void toggleSensor() {
     Serial.println("Switching to Motion Sensor!");
     currentSensor = 1;
   }
-
-  // Add any additional setup or initialization for the newly selected sensor here
 }
 
 int getDistance() {
