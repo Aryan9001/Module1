@@ -2,14 +2,12 @@ const int motionPin = 3;
 const int buttonPin = 2;
 const int trigPin = 7;  
 const int echoPin = 6;  
-const int externalLEDPin = 8; 
 const int switchLEDPin = 9; 
 int currentSensor = 1;  
 void setup() {
   Serial.begin(9600);
   pinMode(motionPin, INPUT);
   pinMode(LED_BUILTIN, OUTPUT);
-  pinMode(externalLEDPin, OUTPUT);
   pinMode(switchLEDPin, OUTPUT);
   pinMode(buttonPin, INPUT_PULLUP);
   pinMode(trigPin, OUTPUT);
@@ -22,11 +20,9 @@ void loop() {
     if (motionState == HIGH) {
       Serial.println("Motion is....DETECTED! Alpha team moving in!");
       digitalWrite(LED_BUILTIN, HIGH);
-      digitalWrite(externalLEDPin, HIGH);
     } else {
       Serial.println("No motion is detected! Mission Accomplished, Over!!");
       digitalWrite(LED_BUILTIN, LOW);
-      digitalWrite(externalLEDPin, LOW);
     }
   } else if (currentSensor == 2) {
     int distance = getDistance();
